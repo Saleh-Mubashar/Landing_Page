@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@100;300;700&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+:root {
+    --green: #00FF6C;
+    --green2: #1ED75F;
+    --font-main: "Sarabun";
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body {
+    background-color: #000;
+    overflow-x: hidden;
+    color: #ffffff;
+    font-family: var(--font-main);
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    height: 19vh;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.header img {
+    width: 115px;
+    height: 110px;
+}
+
+.header p {
+    font-weight: 700;
+    font-size: 12px;
+    margin-top: -15px;
+}
+
+.mobile {
+    display: none!important;
+}
+
+.mobile2 {
+    display: none!important;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    margin: 10px -18%;
+}
+
+.features .feature {
+    flex: 50%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.features .feature1 lottie-player {
+    float: left;
+}
+
+.features .feature2 lottie-player {
+    float: right;
+}
+
+.feature__title {
+    text-align: center;
+    font-weight: 300;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.feature__description {
+    text-align: center;
+    font-weight: 300;
+    font-size: 10px;
+    margin-top: 2px;
+    color: #b3b3b3;
+}
+
+
+/* MAIN AREA (FORM AND TEXT) */
+
+.main_container {
+    display: flex;
+    width: 100%;
+    height: 30vh;
+    flex-wrap: wrap;
+    margin: 5% 10%;
+}
+
+.form {
+    flex: 50%;
+}
+
+.form h1 {
+    color: var(--green);
+    font-size: 17px;
+}
+
+.form span {
+    font-size: 10px;
+    font-weight: 300;
+}
+
+form {
+    max-width: 290px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.form input[type="text"] {
+    background-color: transparent;
+    border: 1px solid var(--green2);
+    color: var(--green2);
+    padding: 15px 15px;
+    margin: 13px 0px;
+    width: 262px;
+}
+
+.form input[type="text"]::placeholder {
+    color: var(--green2);
+    font-size: 11px;
+    font-weight: 100;
+}
+
+input[type="text"]:focus-visible {
+    border: 1.5px solid var(--green2)!important;
+    outline-color: var(--green2);
+    background-color: transparent;
+    outline-width: 0px;
+}
+
+.focus-visible {
+    border: 1px solid var(--green2)!important;
+}
+
+.form input[type="text"]:focus-visible {
+    border: 1px solid var(--green2);
+    border-color: var(--green2)!important;
+}
+
+.form input[type="submit"] {
+    background-color: var(--green2);
+    color: #fff;
+    padding: 14px 18px;
+    border: 1px solid var(--green2);
+    width: 100px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.form input[type="submit"]:hover {
+    background-color: #1bbd53;
+}
+
+.about {
+    flex: 50%;
+    max-width: 44%;
+}
+
+.about h1 {
+    color: var(--green);
+    font-size: 17px;
+}
+
+.about p {
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 20px;
+    color: var(--green2);
+    max-width: 365px;
+}
+
+hr {
+    border-color: var(--green2);
+    margin: 50px 60px 0px 60px;
+}
+
+.footer {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px 0px;
+}
+
+.footer p {
+    color: rgb(190, 190, 190);
+    padding: 10px;
+    font-size: 14px;
+    margin: 10px;
+}
+
+
+/* MOBILE REPONSIVENESS */
+
+@media (max-width:550px) {
+    .desktop {
+        display: none!important;
+    }
+    .mobile {
+        display: flex!important;
+    }
+    .mobile2 {
+        display: block!important;
+    }
+    .header {
+        height: 14vh;
+    }
+    .header img {
+        width: 75px;
+        height: 70px;
+        margin-bottom: 15px;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+    .header p {
+        font-size: 9px;
+    }
+    .features {
+        display: flex;
+        justify-content: center;
+        margin: 0px 0% 50px 0%;
+    }
+    .main_container {
+        align-items: center;
+        height: 55%;
+    }
+    form {
+        max-width: 78vw;
+        align-items: inherit;
+    }
+    .form {
+        flex: 100%;
+        margin-bottom: 30px;
+    }
+    .form input[type="text"] {
+        width: auto;
+    }
+    .form input[type="submit"] {
+        width: 100%;
+    }
+    .about {
+        flex: 100%;
+        margin-bottom: 30px;
+        max-width: 82%;
+    }
+}
