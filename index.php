@@ -32,8 +32,8 @@
         <div class="form desktop">
             <h1>Be the first to know when we launch!</h1>
             <span>subscribe to our newsletter</span>
-            <form action="">
-                <input type="text" placeholder="Email"><br>
+            <form action="assets/php//form.php" method="POST">
+                <input type="text" placeholder="Email" name="email"><br>
                 <input type="submit" value="Subscribe">
             </form>
         </div>
