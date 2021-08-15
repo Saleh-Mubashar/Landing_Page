@@ -1,3 +1,6 @@
+<?php
+require("assets/db.php")
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,9 +35,9 @@
         <div class="form desktop">
             <h1>Be the first to know when we launch!</h1>
             <span>subscribe to our newsletter</span>
-            <form action="assets/php//form.php" method="POST">
+            <form method="POST">
                 <input type="text" placeholder="Email" name="email"><br>
-                <input type="submit" value="Subscribe">
+                <input type="submit" value="Subscribe" name="submit">
             </form>
         </div>
         <div class="about">
@@ -87,7 +90,23 @@
             });
         });
         document.querySelector('.head').setAttribute('draggable', false);
+        // preven form resolution image from showing
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
     </script>
 </body>
 
 </html>
+
+<?php
+
+// PHP code to get email on submit
+
+$email = isset($_POST['email']) ? $_POST['email'] : '';
+
+if (isset($_POST["submit"])) {
+    echo $email;
+}
+
+?>
