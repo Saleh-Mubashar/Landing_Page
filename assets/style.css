@@ -136,6 +136,12 @@ body {
     font-weight: 300;
 }
 
+.form .error {
+    color: red;
+    font-size: 13px;
+    font-weight: 700;
+}
+
 form {
     max-width: 290px;
     display: flex;

@@ -1,5 +1,39 @@
 <?php
-require("assets/db.php")
+
+$emailErr = "";
+$hide = "";
+
+// PHP code to get email on submit
+
+$email = isset($_POST['email']) ? $_POST['email'] : '';
+
+if (isset($_POST["submit"])) {
+
+    if (!isset($email) || trim($email) == '') {
+        $emailErr = "Please enter an email address";
+    } else {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format";
+        } else {
+
+            // send email
+
+            $to      = 'preshychinny@gmail.com';
+            $subject = 'New Subscriber';
+            $message = "The new subscriber is : " . $email;
+            $headers = 'From: admin@arbitency.com'       . "\r\n" .
+                'Reply-To: admin@arbitency.com' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+
+            mail($to, $subject, $message, $headers);
+
+            // save in text file
+
+            file_put_contents("assets/emails.txt", $email . "\n", FILE_APPEND);
+            $hide = "none";
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +44,7 @@ require("assets/db.php")
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitency Landing Page</title>
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" href="assets/images/head.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
@@ -36,8 +71,9 @@ require("assets/db.php")
             <h1>Be the first to know when we launch!</h1>
             <span>subscribe to our newsletter</span>
             <form method="POST">
-                <input type="text" placeholder="Email" name="email"><br>
-                <input type="submit" value="Subscribe" name="submit">
+                <input type="text" placeholder="Email" name="email">
+                <span class="error"><?php echo $emailErr; ?></span><br>
+                <input class="submit" type="submit" value="Subscribe" name="submit">
             </form>
         </div>
         <div class="about">
@@ -48,9 +84,10 @@ require("assets/db.php")
         <div class="form mobile2">
             <h1>Be the first to know when we launch!</h1>
             <span>subscribe to our newsletter</span>
-            <form action="">
-                <input type="text" placeholder="Email"><br>
-                <input type="submit" value="Subscribe">
+            <form action="" method="POST">
+                <input type="text" placeholder="Email" name="email">
+                <span class="error"><?php echo $emailErr; ?></span><br>
+                <input class="submit" type="submit" value="Subscribe" name="submit">
             </form>
         </div>
     </div>
@@ -82,8 +119,8 @@ require("assets/db.php")
     <div class="footer">
         <p>© 2021 Arbitency, Inc.</p>
     </div>
-
     <script>
+        // PREVENT RIGHT CLICK ON LOGO IMAGE
         $(document).ready(function() {
             $(".head").on("contextmenu", function() {
                 return false;
@@ -94,19 +131,19 @@ require("assets/db.php")
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }
+
+        var php_var = "<?php echo $hide; ?>";
+        // hide form and change text
+        if (php_var == "none") {
+            document.querySelector(".form h1").innerHTML = "Thank you!, well keep in touch!";
+            document.querySelector(".form span").style.display = "none";
+            document.querySelector(".form form").style.display = "none";
+            document.querySelector(".mobile2 form").style.display = "none";
+            document.querySelector(".mobile2").style.marginBottom = "25px";
+            document.querySelector(".mobile2 h1").innerHTML = "Thank you!, well keep in touch!";
+            document.querySelector(".mobile2 span").style.display = "none";
+        }
     </script>
 </body>
 
 </html>
-
-<?php
-
-// PHP code to get email on submit
-
-$email = isset($_POST['email']) ? $_POST['email'] : '';
-
-if (isset($_POST["submit"])) {
-    echo $email;
-}
-
-?>
